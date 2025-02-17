@@ -1,0 +1,19 @@
+<mat-tab-group>
+  <mat-tab label="My Page">
+    <ng-template matTabContent>
+      <app-my-page></app-my-page>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Members">
+    <ng-template matTabContent>
+      <app-members-list></app-members-list>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Tournament Tree">
+    <ng-template matTabContent>
+      <app-tournament-tree></app-tournament-tree>
+    </ng-template>
+  </mat-tab>
+
+
+  <router-outlet />
