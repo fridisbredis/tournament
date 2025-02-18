@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { member } from '../models/member';
+import { player } from '../models/player';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +11,9 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getMembers(): Observable<any> {
+  addPlayer(player: player): Observable<any> {
     const headers = { Authorization: `Bearer ${localStorage.getItem('token')}` };
-    return this.http.get(`${this.baseUrl}/members`, { headers }); // GET /api/data
-  }
-
-  addMember(member: member): Observable<any> {
-    const headers = { Authorization: `Bearer ${localStorage.getItem('token')}` };
-    return this.http.post(`${this.baseUrl}/members`, member, { headers }); // POST /api/data
+    return this.http.post(`${this.baseUrl}/players`, player, { headers }); // POST /api/data
   }
 
   getTournamentOrder(): Observable<any> {

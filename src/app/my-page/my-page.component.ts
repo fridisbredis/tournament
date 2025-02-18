@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { member } from '../models/member';
+import { player } from '../models/player';
 
 @Component({
   selector: 'app-my-page',
@@ -14,12 +14,12 @@ export class MyPageComponent {
 
   addMember() {
     console.log('Adding member');
-    const member = {
+    const player = {
       name: 'John Doe',
       email: 'john@doe'
-    } as member
+    } as player
 
-    this.apiService.addMember(member).subscribe(response => {
+    this.apiService.addPlayer(player).subscribe(response => {
       console.log('Member added');
     });
   }

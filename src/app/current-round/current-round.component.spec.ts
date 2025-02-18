@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MembersListComponent } from './members-list.component';
+import { CurrentRoundComponent } from './current-round.component';
 
-describe('MembersListComponent', () => {
-  let component: MembersListComponent;
-  let fixture: ComponentFixture<MembersListComponent>;
+describe('CurrentRoundComponent', () => {
+  let component: CurrentRoundComponent;
+  let fixture: ComponentFixture<CurrentRoundComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MembersListComponent]
+      imports: [CurrentRoundComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MembersListComponent);
+    fixture = TestBed.createComponent(CurrentRoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

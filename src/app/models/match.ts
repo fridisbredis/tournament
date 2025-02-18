@@ -1,6 +1,6 @@
-import { member } from "./member";
+import { player } from "./player";
 
 export class match {
-  player1: member = {} as member;
-  player2: member = {} as member;
+  player1: player = {} as player;
+  player2: player = {} as player;
 }
