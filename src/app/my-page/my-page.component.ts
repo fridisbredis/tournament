@@ -11,16 +11,11 @@ import { player } from '../models/player';
 export class MyPageComponent {
 
   constructor(private apiService: ApiService) { }
+  message: string = '';
 
-  addMember() {
-    console.log('Adding member');
-    const player = {
-      name: 'John Doe',
-      email: 'john@doe'
-    } as player
-
-    this.apiService.addPlayer(player).subscribe(response => {
-      console.log('Member added');
+  setOrder() {
+    this.apiService.setTournamentOrder().subscribe(response => {
+      this.message = "Tournament order set " + response.message;
     });
   }
 

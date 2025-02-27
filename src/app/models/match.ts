@@ -1,6 +1,8 @@
-import { player } from "./player";
-
 export class match {
-  player1: player = {} as player;
-  player2: player = {} as player;
+  player1Id?: number;
+  player2Id?: number;
+  winnerId?: number;
+  decided: boolean = false;
+  round?: number;
+  nextMatch?: match
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MyPageComponent } from './my-page/my-page.component';
@@ -13,7 +13,9 @@ import { CurrentRoundComponent } from "./current-round/current-round.component";
     RouterOutlet,
     MatTabsModule,
     MyPageComponent,
-    TournamentTreeComponent, CurrentRoundComponent]
+    TournamentTreeComponent,
+    CurrentRoundComponent,
+  ]
 })
 export class AppComponent { }
 

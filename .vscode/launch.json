@@ -7,14 +7,47 @@
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "url": "http://localhost:4200/",
+      "webRoot": "${workspaceFolder}"
     },
     {
       "name": "ng test",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: test",
-      "url": "http://localhost:9876/debug.html"
+      "url": "http://localhost:9876/debug.html",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": ".NET Core Launch (web)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/../TournamentApi/bin/Debug/net9.0/TournamentApi.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/../TournamentApi",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5215"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/../TournamentApi/Views"
+      },
+      "enableStepFiltering": false // Lägg till denna rad
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Run Frontend and Backend",
+      "configurations": [
+        "ng serve",
+        ".NET Core Launch (web)"
+      ]
     }
   ]
 }

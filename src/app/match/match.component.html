@@ -1,5 +1,10 @@
-<div>
-  <app-player [player]="match.player1"></app-player>
-  vs
-  <app-player [player]="match.player2"></app-player>
+<div *ngIf="!match.decided">
+  <app-player [player]="player1"></app-player>
+  <hr>
+  <app-player [player]="player2"></app-player>
+</div>
+
+<div *ngIf="match.decided">
+  <app-player [player]="player1"></app-player>
+  <hr>
 </div>

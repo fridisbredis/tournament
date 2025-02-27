@@ -17,6 +17,18 @@ export class ApiService {
   }
 
   getTournamentOrder(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/tournament`);
+    return this.http.get<any>(`${this.baseUrl}/tournament/tournament-order`);
+  }
+
+  setTournamentOrder(): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/tournament/set-tournament-order`, {});
+  }
+
+  getCurrentRoundMatches(round: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/tournament/current-round/${round}`);
+  }
+
+  getPlayerById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/players/${id}`);
   }
 }

@@ -8,7 +8,15 @@ import { ApiService } from './api.service';
 export class TournamentService {
   constructor(private apiService: ApiService) { }
 
-  getTournamentTree(): Observable<any> {
+  getTournamentOrder(): Observable<any> {
     return this.apiService.getTournamentOrder();
+  }
+
+  setTournamentOrder(): Observable<any> {
+    return this.apiService.setTournamentOrder();
+  }
+
+  getCurrentRoundMatches(round: number): Observable<any> {
+    return this.apiService.getCurrentRoundMatches(round);
   }
 }

@@ -1,1 +1,6 @@
-<div>{{player.name}}</div>
+<div>
+  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
+  <span>
+    {{player.name || matchString}}
+  </span>
+</div>

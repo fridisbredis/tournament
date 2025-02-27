@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "npm: start",
       "type": "npm",
       "script": "start",
       "isBackground": true,
@@ -15,12 +16,13 @@
             "regexp": "(.*?)"
           },
           "endsPattern": {
-            "regexp": "bundle generation complete"
+            "regexp": "Compiled successfully"
           }
         }
       }
     },
     {
+      "label": "npm: test",
       "type": "npm",
       "script": "test",
       "isBackground": true,
@@ -33,10 +35,18 @@
             "regexp": "(.*?)"
           },
           "endsPattern": {
-            "regexp": "bundle generation complete"
+            "regexp": "Compiled successfully"
           }
         }
       }
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "dotnet build ${workspaceFolder}/../TournamentApi/TournamentApi.csproj",
+      "problemMatcher": [
+        "$msCompile"
+      ]
     }
   ]
 }
