@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { match } from '../models/match';
-import { TournamentService } from '../services/tournament-service';
+import { TournamentTreeService } from './tournament-tree.service';
 import { CommonModule } from '@angular/common';
 import { MatchComponent } from '../match/match.component';
 import { Subscription } from 'rxjs';
-import { TournamentTreeService } from './tournament-tree.service';
 
 @Component({
   selector: 'app-tournament-tree',
@@ -14,10 +13,11 @@ import { TournamentTreeService } from './tournament-tree.service';
 })
 export class TournamentTreeComponent implements OnInit, OnDestroy {
   rounds: { [key: number]: match[] } = {};
+  roundsArray: { round: number, matches: match[] }[] = [];
   totalRoundsCount = 0;
+  private subscription: Subscription = new Subscription();
 
   constructor(private tournamentTreeService: TournamentTreeService) { }
-  private subscription: Subscription = new Subscription();
 
   ngOnInit(): void {
     this.getOrder();
@@ -28,11 +28,17 @@ export class TournamentTreeComponent implements OnInit, OnDestroy {
   }
 
   getOrder(): void {
-    this.tournamentTreeService.getGroupedMatches().subscribe((data) => {
-      this.rounds = data;
-      console.log(data)
-    });
+    this.subscription.add(
+      this.tournamentTreeService.getGroupedMatches().subscribe((data) => {
+        this.rounds = data;
+        this.totalRoundsCount = Object.keys(data).length;
+        this.roundsArray = Object.keys(this.rounds).map(key => ({ round: Number(key), matches: this.rounds[Number(key)] }));
+        console.log(data);
+      })
+    );
   }
 
- 
+  reloadTree(): void {
+    this.getOrder();
+  }
 }

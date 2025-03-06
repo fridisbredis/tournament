@@ -1,6 +1,16 @@
 <div>
-  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
-  <span>
-    {{player.name || matchString}}
+  <span class="player-name" *ngIf="player.name !== undefined">
+    <mat-icon aria-hidden="false" aria-label="Person icon" fontIcon="person"></mat-icon>
+    {{player.name}}
   </span>
+
+  <span *ngIf="winner" class="star-container">
+    <mat-icon aria-hidden="false" aria-label="Star icon" fontIcon="star" class="star-icon"></mat-icon>
+  </span>
+
+  <span *ngIf="!winner && player.name !== undefined" class="star-container">
+    <mat-icon aria-hidden="false" aria-label="Star outlined" (click)="wonMatch()" fontIcon="star_border"
+      class="star-icon"></mat-icon>
+  </span>
+
 </div>

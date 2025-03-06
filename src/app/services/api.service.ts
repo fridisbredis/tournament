@@ -31,4 +31,12 @@ export class ApiService {
   getPlayerById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/players/${id}`);
   }
+
+  setWinner(matchId: number, playerId: number): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/tournament/update-winner/${matchId}`, { winnerId: playerId });
+  }
+
+  getMatchById(matchId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/tournament/match/${matchId}`);
+  }
 }

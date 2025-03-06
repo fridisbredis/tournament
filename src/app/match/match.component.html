@@ -1,10 +1,7 @@
-<div *ngIf="!match.decided">
-  <app-player [player]="player1"></app-player>
+<div>
+  <app-player [player]="player1" [winner]="match.winnerId === player1.id" [matchId]="match.id"
+    (winnerToggled)="toggleWinner()"></app-player>
   <hr>
-  <app-player [player]="player2"></app-player>
-</div>
-
-<div *ngIf="match.decided">
-  <app-player [player]="player1"></app-player>
-  <hr>
+  <app-player [player]="player2" [winner]="match.winnerId === player2.id" [matchId]="match.id"
+    (winnerToggled)="toggleWinner()"></app-player>
 </div>

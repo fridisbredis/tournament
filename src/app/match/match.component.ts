@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { match } from '../models/match';
 import { player } from '../models/player';
 import { ApiService } from '../services/api.service';
@@ -16,26 +16,30 @@ export class MatchComponent {
   @Input()
   match: match = {} as match;
 
+  @Output()
+  winnerToggled = new EventEmitter<boolean>();
+
   player1: player = {} as player;
   player2: player = {} as player;
+  winner: player = {} as player;
 
   constructor(private matchService: MatchService) {
   }
 
   ngOnInit() {
-    // hämta spelarna per match
-    console.log("get players for match", this.match);
-    if (this.match.decided) {
-      this.getWinner()
-    } else {
-      this.getPlayers();
-    }
+    this.getPlayers();
+    this.getWinner();
+
+  }
+
+  ngAfterViewInit() {
+    console.log(this.match)
   }
 
   getWinner() {
     if (this.match.winnerId) {
       this.matchService.getPlayer(this.match.winnerId).subscribe((data) => {
-        this.player1 = data;
+        this.winner = data;
       });
     }
   }
@@ -51,5 +55,9 @@ export class MatchComponent {
         this.player2 = data;
       });
     }
+  }
+
+  toggleWinner() {
+    this.winnerToggled.emit(true);
   }
 }

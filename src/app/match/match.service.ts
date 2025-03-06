@@ -31,4 +31,8 @@ export class MatchService {
       });
     }
   }
+
+  getMatch(matchId: number): Observable<match> {
+    return this.apiService.getMatchById(matchId);
+  }
 }

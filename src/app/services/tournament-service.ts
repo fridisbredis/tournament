@@ -19,4 +19,8 @@ export class TournamentService {
   getCurrentRoundMatches(round: number): Observable<any> {
     return this.apiService.getCurrentRoundMatches(round);
   }
+
+  setWinner(matchId: number, playerId: number): Observable<any> {
+    return this.apiService.setWinner(matchId, playerId);
+  }
 }

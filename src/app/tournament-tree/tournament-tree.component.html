@@ -1,0 +1,7 @@
+<div class="tournament-tree">
+  <div *ngFor="let round of roundsArray" class="round">
+    <div *ngFor="let match of round.matches" class="match">
+      <app-match [match]="match" (winnerToggled)="reloadTree()"></app-match>
+    </div>
+  </div>
+</div>
